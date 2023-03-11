@@ -1,0 +1,19 @@
+{
+  "name": "pretty-print",
+  "version": "1.0.0",
+  "private":false,
+  "repository": {
+    "type": "git",
+    "directory": ""
+  },
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "description": "print json object to browser screen",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Zhou",
+  "license": "ISC"
+}
