@@ -1,3 +1,4 @@
+import "../index.css";
 function syntaxHighlight(json) {
     json = json
         .replace(/&/g, "&amp;")

@@ -1,19 +1,23 @@
 {
-  "name": "prettier-print",
-  "version": "1.0.0",
-  "private":false,
-  "repository": {
-    "type": "git",
-    "directory": "https://github.com/z123fg/pretty-print"
-  },
-  "types": "./dist/index.d.ts",
-  "files": ["dist"],
-  "description": "print json object to browser screen",
-  "main": "./dist/index.js",
-  
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Adam Zhou",
-  "license": "ISC"
+    "name": "prettier-print",
+    "version": "1.0.5",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "directory": "https://github.com/z123fg/pretty-print"
+    },
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "index.css"
+    ],
+    "description": "print json object to browser screen",
+    "main": "./dist/index.js",
+    "scripts": {
+        "prebuild-lib": "rimraf dist",
+        "build-lib": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Adam Zhou",
+    "license": "ISC"
 }
