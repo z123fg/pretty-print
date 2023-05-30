@@ -29,6 +29,7 @@ var prettyPrint = function (inspectEl) {
         objs[_i - 1] = arguments[_i];
     }
     //const inspectEl = document.querySelector("#inspect");
+    inspectEl = inspectEl !== null && inspectEl !== void 0 ? inspectEl : document.querySelector("#inspect");
     inspectEl && (inspectEl.innerHTML = "");
     objs.forEach(function (obj) {
         var ele = document.createElement("pre");

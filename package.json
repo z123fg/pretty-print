@@ -1,6 +1,6 @@
 {
     "name": "prettier-print",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "private": false,
     "repository": {
         "type": "git",
@@ -14,10 +14,14 @@
     "description": "print json object to browser screen",
     "main": "./dist/index.js",
     "scripts": {
-        "prebuild-lib": "rimraf dist",
+        "prebuild-lib": " rimraf dist",
         "build-lib": "tsc",
+        "prepublishOnly": "npm run prebuild-lib && npm run build-lib",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Adam Zhou",
-    "license": "ISC"
+    "license": "ISC",
+    "devDependencies": {
+        "rimraf": "^4.4.1"
+    }
 }
