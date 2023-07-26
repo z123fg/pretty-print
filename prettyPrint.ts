@@ -35,7 +35,16 @@ const getCircularReplacer = () => {
         return value;
     };
 };
-const prettyPrint = (inspectEl: HTMLElement | null, ...objs: Object[]) => {
+const prettyPrint = (
+    objs: Object[],
+    {
+        inspectEl,
+        replaceCircularReference,
+    }: { inspectEl: HTMLElement | null; replaceCircularReference: boolean } = {
+        inspectEl: null,
+        replaceCircularReference: false,
+    }
+) => {
     //const inspectEl = document.querySelector("#inspect");
     inspectEl = inspectEl ?? document.querySelector("#inspect");
 
