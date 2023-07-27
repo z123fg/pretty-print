@@ -35,15 +35,14 @@ const getCircularReplacer = () => {
         return value;
     };
 };
+
+interface defaultOption {
+    inspectEl?: HTMLElement | null;
+    replaceCircularReference?: boolean;
+}
 const prettyPrint = (
     objs: Object[],
-    {
-        inspectEl,
-        replaceCircularReference,
-    }: { inspectEl: HTMLElement | null; replaceCircularReference: boolean } = {
-        inspectEl: null,
-        replaceCircularReference: false,
-    }
+    { inspectEl = null, replaceCircularReference = false }: defaultOption
 ) => {
     //const inspectEl = document.querySelector("#inspect");
     inspectEl = inspectEl ?? document.querySelector("#inspect");
@@ -52,7 +51,7 @@ const prettyPrint = (
     objs.forEach((obj) => {
         const ele = document.createElement("pre");
         const prettyJSON = syntaxHighlight(
-            JSON.stringify(obj, getCircularReplacer(), 4)
+            JSON.stringify(obj, replaceCircularReference?getCircularReplacer():undefined, 4)
         );
         ele.innerHTML = prettyJSON;
         inspectEl?.appendChild(ele);

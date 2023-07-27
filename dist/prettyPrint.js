@@ -23,17 +23,29 @@ function syntaxHighlight(json) {
         return '<span class="' + cls + '">' + match + "</span>";
     });
 }
-var prettyPrint = function (inspectEl) {
-    var objs = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        objs[_i - 1] = arguments[_i];
-    }
+var getCircularReplacer = function () {
+    var seen = new WeakSet();
+    return function (key, value) {
+        if (typeof value === "object" && value !== null) {
+            if (seen.has(value)) {
+                return;
+            }
+            seen.add(value);
+        }
+        return value;
+    };
+};
+var prettyPrint = function (objs, _a) {
+    var _b = _a === void 0 ? {
+        inspectEl: null,
+        replaceCircularReference: false,
+    } : _a, inspectEl = _b.inspectEl, replaceCircularReference = _b.replaceCircularReference;
     //const inspectEl = document.querySelector("#inspect");
     inspectEl = inspectEl !== null && inspectEl !== void 0 ? inspectEl : document.querySelector("#inspect");
     inspectEl && (inspectEl.innerHTML = "");
     objs.forEach(function (obj) {
         var ele = document.createElement("pre");
-        var prettyJSON = syntaxHighlight(JSON.stringify(obj, null, 4));
+        var prettyJSON = syntaxHighlight(JSON.stringify(obj, getCircularReplacer(), 4));
         ele.innerHTML = prettyJSON;
         inspectEl === null || inspectEl === void 0 ? void 0 : inspectEl.appendChild(ele);
     });

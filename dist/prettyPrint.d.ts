@@ -1,3 +1,6 @@
 import "../index.css";
-declare const prettyPrint: (inspectEl: HTMLElement | null, ...objs: Object[]) => void;
+declare const prettyPrint: (objs: Object[], { inspectEl, replaceCircularReference, }?: {
+    inspectEl: HTMLElement | null;
+    replaceCircularReference: boolean;
+}) => void;
 export default prettyPrint;
